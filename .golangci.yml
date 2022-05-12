@@ -1,0 +1,46 @@
+run:
+  timeout: 3m
+  tests: true
+  skip-dirs:
+    - vendor$
+output:
+  print-issues-lines: true
+  print-linter-name: true
+linters:
+  disable-all: true
+  fast: false
+  enable:
+    - asciicheck
+    - bodyclose
+    - containedctx
+    - contextcheck
+    - deadcode
+    - dogsled
+    - durationcheck
+    - errcheck
+    - errchkjson
+    - errname
+    - exhaustive
+    - exportloopref
+    - godot
+    - gofumpt
+    - goimports
+    - gosec
+    - gosimple
+    - govet
+    - ineffassign
+    - misspell
+    - noctx
+    - staticcheck
+    - structcheck
+    - tenv
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - varcheck
+    - whitespace
+
+linters-settings:
+  exhaustive:
+    default-signifies-exhaustive: true
