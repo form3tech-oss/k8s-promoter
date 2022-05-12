@@ -1,0 +1,9 @@
+version: "v0.1"
+configType: Cluster
+metadata:
+  name: dev4
+  labels:
+    environment: development
+    cloud: cloud1
+spec:
+  manifestFolder: /flux/promoted/development/dev4/cloud1

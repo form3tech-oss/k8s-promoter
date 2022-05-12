@@ -1,0 +1,14 @@
+version: "v0.1"
+configType: Workload
+metadata:
+  name: workload-with-exclusions
+  description: "A workload"
+spec:
+  path: /flux/manifests/workload
+  exclusions:
+    - key: "cloud"
+      operator: "NotEqual"
+      value: "cloud1"
+    - key: "environment"
+      operator: "Equal"
+      value: "development"

@@ -1,0 +1,9 @@
+.idea/
+/bin
+/pact-go
+/pact
+/tools
+.DS_Store
+.vscode/
+
+dist/
