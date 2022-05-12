@@ -30,7 +30,7 @@ func NewWorkloadRegistry(fs billy.Filesystem, rootDir string, log *logrus.Entry)
 }
 
 // Get returns the Workload struct with workloadID set if the file cannot be found
-// This means the workload does not have any exclusion rules applied
+// This means the workload does not have any exclusion rules applied.
 func (r *FSWorkloadRegistry) Get(workloadID string) (Workload, error) {
 	workload, err := r.parseWorkload(workloadID)
 	if err == nil {

@@ -347,7 +347,7 @@ func (f *GithubFake) handleAddAssignees(c *gin.Context) {
 
 func (f *GithubFake) FindPRWhereTitleContains(keywords ...string) github.PullRequest {
 	for _, newPR := range f.CreatedPullRequests {
-		var contains = true
+		contains := true
 		for _, keyword := range keywords {
 			if !strings.Contains(*newPR.Title, keyword) && !strings.Contains(*newPR.Body, keyword) {
 				contains = false

@@ -286,7 +286,7 @@ func (p *Promoter) performChanges(ctx context.Context, changes []detect.Workload
 }
 
 // performChange uses previous environment as source for copying workload manifests from.
-// As we are checking the consistency of workloads (i.e. all clusters in previous environment are running the same promoted version)
+// As we are checking the consistency of workloads (i.e. all clusters in previous environment are running the same promoted version).
 func (p *Promoter) performChange(ctx context.Context, cluster clusterconf.Cluster, change detect.WorkloadChange, targetEnv environment.Env) error {
 	if ctx.Err() != nil {
 		return fmt.Errorf("performChange: %w", ctx.Err())

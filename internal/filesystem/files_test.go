@@ -2,8 +2,9 @@ package filesystem_test
 
 import (
 	"errors"
-	"github.com/form3tech/k8s-promoter/internal/filesystem"
 	"testing"
+
+	"github.com/form3tech/k8s-promoter/internal/filesystem"
 
 	"github.com/form3tech/k8s-promoter/internal/testutils"
 	"github.com/go-git/go-billy/v5/memfs"

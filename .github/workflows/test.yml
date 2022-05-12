@@ -24,7 +24,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-
 
-      - run: make build
+      - name: lint
+        uses: magefile/mage-action@0a2bfd2ca891da3552ae39be755aecdce60ed1bc # v1.7.0
+        with:
+          version: latest
+          args: build
 
   lint:
     name: Lint
@@ -48,7 +52,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-
 
-      - run: make lint
+      - name: lint
+        uses: magefile/mage-action@0a2bfd2ca891da3552ae39be755aecdce60ed1bc # v1.7.0
+        with:
+          version: latest
+          args: lint
 
   test:
     name: Test
@@ -72,4 +80,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-
 
-      - run: make test
+      - name: lint
+        uses: magefile/mage-action@0a2bfd2ca891da3552ae39be755aecdce60ed1bc # v1.7.0
+        with:
+          version: latest
+          args: test

@@ -175,7 +175,6 @@ func Test_PRBuilder_Title(t *testing.T) {
 		},
 		"many workloads promoted to dev": {
 			results: promotion.Results{
-
 				"dev1": {
 					"foo": detect.WorkloadChange{
 						W: detect.Workload{

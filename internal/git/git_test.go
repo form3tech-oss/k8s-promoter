@@ -2,6 +2,11 @@ package git_test
 
 import (
 	"context"
+	"io"
+	"net/http/httptest"
+	"testing"
+	"time"
+
 	gitint "github.com/form3tech/k8s-promoter/internal/git"
 	"github.com/form3tech/k8s-promoter/internal/testutils"
 	"github.com/gin-gonic/gin"
@@ -14,10 +19,6 @@ import (
 	"github.com/go-git/go-git/v5/plumbing/transport/http"
 	gitfilesystem "github.com/go-git/go-git/v5/storage/filesystem"
 	"github.com/stretchr/testify/require"
-	"io"
-	"net/http/httptest"
-	"testing"
-	"time"
 )
 
 func Test_CloneFailsWhenAuthIsInvalid(t *testing.T) {
@@ -190,6 +191,7 @@ func setupTestRepo(t *testing.T) *testRepo {
 	}
 }
 
+//nolint:unparam
 func setupFakeGit(t *testing.T, tRepo *testRepo, owner, repoName string, auth *http.BasicAuth) *httptest.Server {
 	gin.SetMode(gin.TestMode)
 	r := gin.New()

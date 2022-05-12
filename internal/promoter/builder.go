@@ -62,7 +62,7 @@ Promotions:{{ "\n" }}
 `
 )
 
-// PullRequestBuilder is reponsible for building description, title and commit message for promotion pull request.
+// PullRequestBuilder is responsible for building description, title and commit message for promotion pull request.
 type PullRequestBuilder struct {
 	env                 environment.Env
 	logger              *logrus.Entry
@@ -112,7 +112,6 @@ func NewPullRequestBuilder(fs billy.Filesystem, log *logrus.Entry, env environme
 			return i == 0
 		},
 	}).Parse(PromotionsSectionTemplate)
-
 	if err != nil {
 		return nil, err
 	}
@@ -121,7 +120,8 @@ func NewPullRequestBuilder(fs billy.Filesystem, log *logrus.Entry, env environme
 		env:                 env,
 		pullRequestTemplate: pullRequestTemplate,
 		logger:              log.WithField("module", "PullRequestBuilder"),
-		promotionsTemplate:  promotionsTemplate}, nil
+		promotionsTemplate:  promotionsTemplate,
+	}, nil
 }
 
 func (p *PullRequestBuilder) Build(promotions promotion.Results, commits []*github.Commit, kind promotion.Kind) github.PromotionPullRequest {

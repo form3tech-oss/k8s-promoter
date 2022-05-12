@@ -11,14 +11,16 @@ const (
 	OperationRemove Operation = "Remove"
 )
 
-// WorkloadChange represents a change to be conducted over a given workload
+// WorkloadChange represents a change to be conducted over a given workload.
 type WorkloadChange struct {
 	Op Operation
 	W  Workload
 }
 
-type WorkloadChanges []WorkloadChange
-type FilterFn func(wc WorkloadChange) bool
+type (
+	WorkloadChanges []WorkloadChange
+	FilterFn        func(wc WorkloadChange) bool
+)
 
 func (wc WorkloadChanges) Filter(predicate FilterFn) WorkloadChanges {
 	var filtered WorkloadChanges
@@ -51,8 +53,8 @@ type workloadChangeList []WorkloadChange
 
 func (w workloadChangeList) Len() int {
 	return len(w)
-
 }
+
 func (w workloadChangeList) Less(i, j int) bool {
 	return w[i].W.Name < w[j].W.Name
 }

@@ -16,7 +16,7 @@ import (
 // PromotionToNewCluster implements Promotion interface. It encapsulates the logic of finding
 // workload changes and clusters when we detect new clusters added in the config repo.
 // It contains one additional step that must be done following promotion of manifests to new cluster,
-// namely creating config files and kustomization for new cluster. This is currently done in AfterChanges
+// namely creating config files and kustomization for new cluster. This is currently done in AfterChanges.
 type PromotionToNewCluster struct {
 	env           environment.Env
 	kind          Kind
@@ -66,7 +66,6 @@ func (s *PromotionToNewCluster) Changes() ([]detect.WorkloadChange, clusterconf.
 	}
 
 	return changes, s.clusters.New, nil
-
 }
 
 func (s *PromotionToNewCluster) AfterChanges(promotions Results, clusters clusterconf.Clusters) error {

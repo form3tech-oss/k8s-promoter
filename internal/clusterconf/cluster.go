@@ -105,8 +105,10 @@ func (l Labels) Hash() string {
 	return fmt.Sprintf("%x", hash.Sum(nil))
 }
 
-type Clusters []Cluster
-type FilterFn func(c Cluster) bool
+type (
+	Clusters []Cluster
+	FilterFn func(c Cluster) bool
+)
 
 func (c Clusters) Contains(pretender Cluster) bool {
 	for _, cluster := range c {
@@ -153,7 +155,7 @@ func (c Clusters) Filter(predicate FilterFn) Clusters {
 }
 
 // Group groups all development clusters together in one group
-// for test & production, we group the clusters individually
+// for test & production, we group the clusters individually.
 func (c Clusters) Group(target environment.Env) []Clusters {
 	var res []Clusters
 

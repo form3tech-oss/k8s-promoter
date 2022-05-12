@@ -10,9 +10,7 @@ const (
 	sep = "..."
 )
 
-var (
-	ErrCommitRangeIncorrect = errors.New("commit range incorrect")
-)
+var ErrCommitRangeIncorrect = errors.New("commit range incorrect")
 
 type CommitRange struct {
 	FromPrefix string

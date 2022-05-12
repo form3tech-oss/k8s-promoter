@@ -11,11 +11,12 @@ package testutils
 import (
 	"context"
 	"fmt"
-	http2 "github.com/go-git/go-git/v5/plumbing/transport/http"
 	"net/http"
 	"strings"
 	"testing"
 	"time"
+
+	http2 "github.com/go-git/go-git/v5/plumbing/transport/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-git/go-git/v5"
@@ -87,7 +88,7 @@ func (g *FakeGit) endpointURL(owner, repo, path string) string {
 	return fmt.Sprintf("/%s/%s.git/%s", owner, repo, strings.TrimPrefix(path, "/"))
 }
 
-// {"GET", "/info/refs$", get_info_refs}
+// {"GET", "/info/refs$", get_info_refs}.
 func (g *FakeGit) getInfoRefs(c *gin.Context) {
 	if err := g.validateCredentials(c.Request); err != nil {
 		c.Writer.WriteHeader(http.StatusForbidden)
@@ -128,7 +129,7 @@ func (g *FakeGit) getInfoRefs(c *gin.Context) {
 	require.NoError(g.t, err)
 }
 
-//{"POST", "/git-upload-pack$", service_rpc},
+//{"POST", "/git-upload-pack$", service_rpc},.
 func (g *FakeGit) getUploadPack(c *gin.Context) {
 	if err := g.validateCredentials(c.Request); err != nil {
 		c.Writer.WriteHeader(http.StatusForbidden)
@@ -165,7 +166,7 @@ func (g *FakeGit) getUploadPack(c *gin.Context) {
 	require.NoError(g.t, err)
 }
 
-//{"POST", "/git-receive-pack$", service_rpc}
+//{"POST", "/git-receive-pack$", service_rpc}.
 func (g *FakeGit) getReceivePack(c *gin.Context) {
 	if err := g.validateCredentials(c.Request); err != nil {
 		c.Writer.WriteHeader(http.StatusForbidden)
@@ -207,30 +208,29 @@ func (g *FakeGit) Load(*transport.Endpoint) (storer.Storer, error) {
 	return g.gitRepo.Storer, nil
 }
 
-// {"GET", "/HEAD$", get_head}
+// {"GET", "/HEAD$", get_head}.
 func (g *FakeGit) getHead(*gin.Context) {
 	g.t.Fatalf("getHead not implemented")
 }
 
 // {"GET", "/objects/info/http-alternates$", get_text_file}
-// {"GET", "/objects/info/alternates$", get_text_file}
+// {"GET", "/objects/info/alternates$", get_text_file}.
 func (g *FakeGit) getTextFile(*gin.Context) {
 	g.t.Fatalf("getTextFile not implemented")
-
 }
 
-// {"GET", "/objects/info/packs$", get_info_packs}
+// {"GET", "/objects/info/packs$", get_info_packs}.
 func (g *FakeGit) getInfoPacks(*gin.Context) {
 	g.t.Fatalf("getInfoPacks not implemented")
 }
 
-//{"GET", "/objects/[0-9a-f]{2}/[0-9a-f]{38}$", get_loose_object},
+//{"GET", "/objects/[0-9a-f]{2}/[0-9a-f]{38}$", get_loose_object},.
 func (g *FakeGit) getLooseObject(*gin.Context) {
 	g.t.Fatalf("getLooseObject not implemented")
 }
 
 //{"GET", "/objects/pack/pack-[0-9a-f]{40}\\.pack$", get_pack_file},
-//{"GET", "/objects/pack/pack-[0-9a-f]{64}\\.pack$", get_pack_file},
+//{"GET", "/objects/pack/pack-[0-9a-f]{64}\\.pack$", get_pack_file},.
 func (g *FakeGit) getPackFile(*gin.Context) {
 	g.t.Fatalf("getPackFile not implemented")
 }
