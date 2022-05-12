@@ -1,0 +1,75 @@
+name: test
+
+on: [push]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d50f8ea76748df49594d9b109b614f3b4db63c71  # v3.0.0
+
+      - name: Set up Go
+        uses: actions/setup-go@a5865a93f26fcb9014b34e4be3fb246a9691a281 # v3.0.0
+        with:
+          go-version: 1.17
+
+      - uses: actions/cache@2d8d0d1c9b41812b6fd3d4ae064360e7d8762c7b # v3.0.0
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - run: make build
+
+  lint:
+    name: Lint
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d50f8ea76748df49594d9b109b614f3b4db63c71  # v3.0.0
+
+      - name: Set up Go
+        uses: actions/setup-go@a5865a93f26fcb9014b34e4be3fb246a9691a281 # v3.0.0
+        with:
+          go-version: 1.17
+
+      - uses: actions/cache@2d8d0d1c9b41812b6fd3d4ae064360e7d8762c7b # v3.0.0
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - run: make lint
+
+  test:
+    name: Test
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d50f8ea76748df49594d9b109b614f3b4db63c71  # v3.0.0
+
+      - name: Set up Go
+        uses: actions/setup-go@a5865a93f26fcb9014b34e4be3fb246a9691a281 # v3.0.0
+        with:
+          go-version: 1.17
+
+      - uses: actions/cache@2d8d0d1c9b41812b6fd3d4ae064360e7d8762c7b # v3.0.0
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - run: make test

@@ -1,0 +1,11 @@
+version: "v0.1"
+configType: Workload
+metadata:
+  name: workload-with-invalid-exclusion
+  description: "A workload"
+spec:
+  path: /flux/manifests/workload
+  exclusions:
+    - key: "cloud"
+      operator: "foo"
+      value: "cloud1"
