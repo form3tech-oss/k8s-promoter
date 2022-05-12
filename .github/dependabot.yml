@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule:
+      interval: weekly
+      time: "08:00"
+      timezone: Europe/London
+    pull-request-branch-name:
+      separator: "-"
+    reviewers:
+      - "form3tech-oss/Contributors-codeowners"
