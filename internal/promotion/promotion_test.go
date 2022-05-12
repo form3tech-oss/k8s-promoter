@@ -37,8 +37,8 @@ func Test_PromotionResults(t *testing.T) {
 			workloads: []string{"bar", "baz", "foo"},
 			clusters:  []string{"dev1", "dev4"},
 			workloadsPerCluster: map[string][]string{
-				"dev1": []string{"bar", "foo"},
-				"dev4": []string{"baz", "foo"},
+				"dev1": {"bar", "foo"},
+				"dev4": {"baz", "foo"},
 			},
 		},
 		"when empty": {

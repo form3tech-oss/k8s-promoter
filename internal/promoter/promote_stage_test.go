@@ -106,7 +106,7 @@ func PromoteTest(t *testing.T) (*PromoteStage, *PromoteStage, *PromoteStage) {
 	return stage, stage, stage
 }
 
-// Given
+// Given.
 func (s *PromoteStage) a_fake_github_server() *PromoteStage {
 	githubFake := testutils.NewGithubFake(
 		s.t,
@@ -155,7 +155,7 @@ func (s *PromoteStage) deleted_source_manifests_for_the_workload(workload string
 }
 
 func (s *PromoteStage) a_clusters_configuration_file() *PromoteStage {
-	var clusters = allClusters()
+	clusters := allClusters()
 	clustersYAML, err := toYAML(clusters)
 	require.NoError(s.t, err)
 
@@ -165,7 +165,7 @@ func (s *PromoteStage) a_clusters_configuration_file() *PromoteStage {
 }
 
 func (s *PromoteStage) a_clusters_configuration_file_with_new_dev_cluster() *PromoteStage {
-	var clusters = allClusters()
+	clusters := allClusters()
 	clusters = append(clusters, cluster("development", "dev1", "cloud1"))
 
 	clustersYAML, err := toYAML(clusters)
@@ -177,7 +177,7 @@ func (s *PromoteStage) a_clusters_configuration_file_with_new_dev_cluster() *Pro
 }
 
 func (s *PromoteStage) a_clusters_configuration_file_with_new_test_clusters() *PromoteStage {
-	var clusters = allClusters()
+	clusters := allClusters()
 	clusters = append(clusters, cluster("test", "new-test-cluster-1", "cloud1"))
 	clusters = append(clusters, cluster("test", "new-test-cluster-2", "cloud2"))
 
@@ -191,7 +191,7 @@ func (s *PromoteStage) a_clusters_configuration_file_with_new_test_clusters() *P
 }
 
 func (s *PromoteStage) a_clusters_configuration_file_with_new_prod_clusters() *PromoteStage {
-	var clusters = allClusters()
+	clusters := allClusters()
 	clusters = append(clusters, cluster("production", "new-prd", "cloud1"))
 
 	clustersYAML, err := toYAML(clusters)
@@ -203,7 +203,7 @@ func (s *PromoteStage) a_clusters_configuration_file_with_new_prod_clusters() *P
 }
 
 func (s *PromoteStage) a_clusters_file_with_only_dev_clusters() *PromoteStage {
-	var clusters = []clusterconf.Cluster{
+	clusters := []clusterconf.Cluster{
 		cluster("development", "dev2", "cloud1"),
 		cluster("development", "dev3", "cloud1"),
 		cluster("development", "dev4", "cloud2"),
@@ -346,7 +346,7 @@ func (s *PromoteStage) non_workload_update(path, content string) *PromoteStage {
 	return s
 }
 
-// takes the last commit as start for the commit range
+// takes the last commit as start for the commit range.
 func (s *PromoteStage) commit_range_start() *PromoteStage {
 	s.commitRange.Start = s.parentHash.String()
 	s.githubFake.SetBaseCommit(s.parentHash.String())
@@ -354,7 +354,7 @@ func (s *PromoteStage) commit_range_start() *PromoteStage {
 	return s
 }
 
-//takes the last commit as end for commit range
+// takes the last commit as end for commit range.
 func (s *PromoteStage) commit_range_end() *PromoteStage {
 	s.commitRange.End = s.parentHash.String()
 
@@ -435,7 +435,7 @@ func (s *PromoteStage) a_file_with_content(path, content string) *PromoteStage {
 }
 
 // helper to commit changes in working tree
-// important that parentHash is set appropiately for every commit
+// important that parentHash is set appropiately for every commit.
 func (s *PromoteStage) CommitChange(msg string, author string, committer string, writeSourceCommits bool, trackAsSourceCommit bool) {
 	if writeSourceCommits {
 		// Commit messages could contain \r\n or \n. Use \r\n here as that is the harder case

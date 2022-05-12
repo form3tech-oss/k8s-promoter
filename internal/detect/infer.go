@@ -21,9 +21,7 @@ const (
 	promotedDir       = "promoted"
 )
 
-var (
-	ErrNotWorkloadManifest = fmt.Errorf("not a workload manifest")
-)
+var ErrNotWorkloadManifest = fmt.Errorf("not a workload manifest")
 
 type Inferer struct {
 	repo         *git.Repository
@@ -261,7 +259,7 @@ func (w *Inferer) workload(path string) (Workload, error) {
 }
 
 // directory path convention is the following
-// flux/manifests/workload/asset.yaml
+// flux/manifests/workload/asset.yaml.
 func (w *Inferer) inferSourceManifestWorkload(path string) (Workload, error) {
 	split := strings.Split(path, "/")
 	if len(split) < sourceManifestDirLevel {
@@ -278,7 +276,7 @@ func (w *Inferer) inferSourceManifestWorkload(path string) (Workload, error) {
 // flux/promoted/environment/cluster/cloud/workload/asset.yaml
 // we ignore changes that don't fall within a workload, such as cluster level kustomizations as they are generated
 // flux/promoted/development/dev1/cloud1/kustomization.yaml
-// if we change the format, we would have to no-op push a promotion until we have a way to signal such a workflow
+// if we change the format, we would have to no-op push a promotion until we have a way to signal such a workflow.
 func (w *Inferer) inferPromotedWorkload(path string) (Workload, error) {
 	split := strings.Split(path, "/")
 

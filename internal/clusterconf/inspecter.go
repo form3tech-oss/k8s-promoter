@@ -10,9 +10,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-var (
-	ErrRepoNotInitialised = errors.New("repo reference is nil")
-)
+var ErrRepoNotInitialised = errors.New("repo reference is nil")
 
 type ClusterInspecter struct {
 	Repo   *git.Repository
@@ -64,7 +62,6 @@ func (c *ClusterInspecter) newClusters(all Clusters) ([]Cluster, error) {
 
 	for _, cluster := range all {
 		_, err := wt.Filesystem.Stat(cluster.ManifestFolder())
-
 		if err != nil {
 			if err == os.ErrNotExist {
 				missingOnDisk = append(missingOnDisk, cluster)

@@ -12,14 +12,12 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-var (
-	kustomizationTemplate = `---
+var kustomizationTemplate = `---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:{{range $element := .}}
   - ./{{$element}}{{end}}
 `
-)
 
 const (
 	KustomizationFile = "kustomization.yaml"

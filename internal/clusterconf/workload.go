@@ -75,12 +75,10 @@ func (e Exclusion) Excludes(labels Labels) bool {
 		case OperatorNotEqual:
 			if e.Key == key && e.Value != value {
 				return true
-
 			}
 		case OperatorEqual:
 			if e.Key == key && e.Value == value {
 				return true
-
 			}
 		}
 	}

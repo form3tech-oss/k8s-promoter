@@ -56,7 +56,7 @@ func TestNewConfigKust(t *testing.T) {
 				testutils.WriteFile(t, fs, path(cluster, "bar-config.yaml"), tt.content)
 			}
 
-			clusterWorkloads := map[string][]string{"dev1": []string{"foo", "bar"}}
+			clusterWorkloads := map[string][]string{"dev1": {"foo", "bar"}}
 			err := k.Write(fs, clusterWorkloads)
 			require.NoError(t, err)
 

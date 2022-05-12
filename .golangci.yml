@@ -44,3 +44,11 @@ linters:
 linters-settings:
   exhaustive:
     default-signifies-exhaustive: true
+issues:
+  exclude-rules:
+    - path: args_test.go
+      linters:
+        - unparam
+    - path: promote_stage_test.go
+      linters:
+        - unparam

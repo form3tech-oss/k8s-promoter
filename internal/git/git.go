@@ -12,9 +12,7 @@ import (
 	gitfilesystem "github.com/go-git/go-git/v5/storage/filesystem"
 )
 
-var (
-	ErrNoRefProvided = fmt.Errorf("empty ref")
-)
+var ErrNoRefProvided = fmt.Errorf("empty ref")
 
 type CloneArgs struct {
 	Auth    *http.BasicAuth

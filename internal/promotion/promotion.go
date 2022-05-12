@@ -18,7 +18,7 @@ const (
 )
 
 // Results holds the result of promotions. This structure of this:
-// map[cluster]map[workload]detect.WorkloadChange
+// map[cluster]map[workload]detect.WorkloadChange.
 type Results map[string]map[string]detect.WorkloadChange
 
 func (promotions Results) ClusterNames() []string {

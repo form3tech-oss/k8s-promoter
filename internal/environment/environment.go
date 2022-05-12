@@ -15,9 +15,7 @@ const (
 	Production  Env = "production"
 )
 
-var (
-	ErrUnknownEnvironment = fmt.Errorf("unknown environment")
-)
+var ErrUnknownEnvironment = fmt.Errorf("unknown environment")
 
 type Env string
 

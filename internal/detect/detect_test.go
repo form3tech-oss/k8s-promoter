@@ -259,8 +259,8 @@ func TestDiff(t *testing.T) {
 			testutils.RepoWith(t,
 				testutils.AddContent(
 					[]testutils.Content{
-						//the resources in manifests are to satisfy the environment check which always
-						//sees if the source of manifests contains the files or not then the current environment
+						// the resources in manifests are to satisfy the environment check which always
+						// sees if the source of manifests contains the files or not then the current environment
 						{
 							Path:    "flux/manifests/workload2/kustomization.yaml",
 							Content: "some content",

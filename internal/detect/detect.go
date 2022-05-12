@@ -111,7 +111,6 @@ func (d *Detect) fromManifestSource(sourceEnv environment.Env) ([]WorkloadChange
 	}
 
 	return changes, err
-
 }
 
 func (d *Detect) fromClustersInPreviousEnv(sourceEnv environment.Env, previousEnvClusters clusterconf.Clusters) ([]WorkloadChange, error) {

@@ -669,7 +669,6 @@ func Test_PromotionOfWorkloadsWithWorkloadExclusion(t *testing.T) {
 			"/promoted/development/dev3/cloud1").
 		that_has_kustomization_for_workloads("/promoted/development/dev2/cloud1", "foo").
 		that_has_kustomization_for_workloads("/promoted/development/dev3/cloud1", "foo")
-
 }
 
 func Test_PromotionOfWorkloadsWithWorkloadExclusionToTestEnv(t *testing.T) {

@@ -1,9 +1,10 @@
 package git_test
 
 import (
+	"testing"
+
 	"github.com/form3tech/k8s-promoter/internal/git"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestNewCommitRange(t *testing.T) {

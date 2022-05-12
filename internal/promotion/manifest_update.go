@@ -82,7 +82,6 @@ func (s *PromotionManifestUpdate) Changes() ([]detect.WorkloadChange, clustercon
 	}
 
 	return selectedChanges, s.clusters.Existing, nil
-
 }
 
 func (s *PromotionManifestUpdate) changesFromPreviousEnv(changes []detect.WorkloadChange) ([]detect.WorkloadChange, error) {
