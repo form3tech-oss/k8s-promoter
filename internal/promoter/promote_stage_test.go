@@ -536,11 +536,6 @@ func (s *PromoteStage) promote_succeeds() *PromoteStage {
 	return s
 }
 
-func (s *PromoteStage) promote_fails() *PromoteStage {
-	require.Error(s.t, s.err)
-	return s
-}
-
 func (s *PromoteStage) a_message_is_logged(msg string, level logrus.Level) *PromoteStage {
 	logs := s.logBuffer.String()
 
