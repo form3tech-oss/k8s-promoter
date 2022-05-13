@@ -735,7 +735,7 @@ func Test_PromotionToTestWhenDevelopmentInInconsistentState(t *testing.T) {
 		is_called()
 
 	then.
-		promote_fails().
+		promote_succeeds().
 		a_message_is_logged(promoter.NotInSyncMsg, logrus.InfoLevel)
 }
 
@@ -760,7 +760,7 @@ func Test_PromotionToProductionWhenTestInInconsistentState(t *testing.T) {
 		is_called()
 
 	then.
-		promote_fails().
+		promote_succeeds().
 		a_message_is_logged(promoter.NotInSyncMsg, logrus.InfoLevel)
 }
 

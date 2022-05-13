@@ -171,6 +171,7 @@ func (p *Promoter) Promote(ctx context.Context, env string) error {
 	if err != nil {
 		if errors.Is(err, ErrClustersNotInSync) {
 			p.logger.Info(NotInSyncMsg)
+			return nil
 		}
 		return err
 	}
@@ -186,6 +187,7 @@ func (p *Promoter) Promote(ctx context.Context, env string) error {
 	if err != nil {
 		if errors.Is(err, ErrClustersNotInSync) {
 			p.logger.Info(NotInSyncMsg)
+			return nil
 		}
 		return err
 	}
