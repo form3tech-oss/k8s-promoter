@@ -93,6 +93,12 @@ spec:
 
 ## Contributing
 
+### Development
+
+This project uses [Magefile](https://magefile.org/) build tool. Follow [installation instructions](https://github.com/magefile/mage#installation) to set it up.
+
+Once installed, run `mage` to list available targets.
+
 ### Release
 
 After merging to master, GitHub Action will push new tag, which in turn will trigger `goreleaser` action to build and upload new release.
