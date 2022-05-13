@@ -21,6 +21,7 @@ import (
 
 const (
 	webFlowUser  = "web-flow"
+	unknownUser  = "unknown-user"
 	prLabel      = "k8s-promoter/automated-promotion"
 	maxAssignees = 10
 )
@@ -226,11 +227,24 @@ func (r *ManifestRepository) GetCommits(ctx context.Context, base string, head s
 		return commits, fmt.Errorf("CompareCommits: %w", err)
 	}
 
+	var author, committer string
 	for _, commit := range commitComp.Commits {
+		if commit.Author == nil || commit.Author.Login == nil {
+			author = unknownUser
+		} else {
+			author = *commit.Author.Login
+		}
+
+		if commit.Committer == nil || commit.Committer.Login == nil {
+			committer = unknownUser
+		} else {
+			committer = *commit.Committer.Login
+		}
+
 		commits = append(commits, &Commit{
 			Hash:           *commit.SHA,
-			AuthorLogin:    *commit.Author.Login,
-			CommitterLogin: *commit.Committer.Login,
+			AuthorLogin:    *github.String(author),
+			CommitterLogin: *github.String(committer),
 		})
 	}
 
@@ -265,7 +279,7 @@ func (r *ManifestRepository) GetPullRequestAssignees(ctx context.Context, source
 
 func (r *ManifestRepository) isAssignee(ctx context.Context, assignee string) (bool, error) {
 	// Github's own user is never a valid assignee so do not bother checking
-	if assignee == webFlowUser {
+	if assignee == webFlowUser || assignee == unknownUser {
 		return false, nil
 	}
 	for _, noIssueUser := range r.noIssueUsers {
