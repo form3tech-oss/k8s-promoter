@@ -10,12 +10,12 @@ jobs:
     name: Tag
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@d50f8ea76748df49594d9b109b614f3b4db63c71  # v3.0.0
+      - uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3  # v3.5.0
         with:
           fetch-depth: 0
 
       - name: Bump version and push tag
-        uses: mathieudutour/github-tag-action@d745f2e74aaf1ee82e747b181f7a0967978abee0 # v6.0
+        uses: mathieudutour/github-tag-action@fcfbdceb3093f6d85a3b194740f8c6cec632f4e2 # v6.1
         with:
           github_token: "${{ secrets.GITHUB_TOKEN }}"
 
@@ -25,17 +25,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@d50f8ea76748df49594d9b109b614f3b4db63c71  # v3.0.0
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3  # v3.5.0
         with:
           fetch-depth: 0
 
       - name: Set up Go
-        uses: actions/setup-go@a5865a93f26fcb9014b34e4be3fb246a9691a281 # v3.0.0
+        uses: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9 # v4.0.0
         with:
           go-version: 1.17
 
       - name: Run GoReleaser release
-        uses: goreleaser/goreleaser-action@b953231f81b8dfd023c58e0854a721e35037f28b # v2.9.1
+        uses: goreleaser/goreleaser-action@b508e2e3ef3b19d4e4146d4f8fb3ba9db644a757 # v3.2.0
         with:
           distribution: goreleaser
           version: v1.7.0
